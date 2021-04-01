@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="heading" class="mat-display-3">
+                VOFFIS LOGIN PAGE
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <label for="emailAddress">Email address</label>
+                    <input type="email" class="form-control" id="emailAddress" formControlName="emailAddress" 
+                    [(ngModel)]="email" placeholder="Enter Email Address">
+                    <label class="text-danger" *ngIf="form.controls['emailAddress'].touched&&form.controls['emailAddress'].hasError('required')">
+                        Email is Required
+                    </label>
+                    <label class="text-danger" *ngIf="form.controls['emailAddress'].touched&&form.controls['emailAddress'].hasError('email')">
+                      emailid@domainName.com
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" [type]="hide ? 'password' : 'text'"  formControlName="password"
+                    [(ngModel)]="Password" placeholder="Password">
+                   
+                    <label class="text-danger" *ngIf="form.controls['password'].touched&&form.controls['password'].hasError('required')">
+                    Password is Required
+                    </label>
+                    <label class="text-danger" *ngIf="form.controls['password'].hasError('hasNumber')">
+                    Must have at least 1 number!
+                    </label>
+                    <label class="text-danger" *ngIf="form.controls['password'].hasError('hasCapitalCase')">
+                    Must have at least 1 Capital Letter
+                    </label>
+                    <label class="text-danger" *ngIf="form.controls['password'].hasError('hasSmallCase')">
+                    Must have at least 1 Small Letter
+                    </label>
+                    <label class="text-danger" *ngIf="form.controls['password'].hasError('hasSpecialCharacters')">
+                    Must have at least 1 SpecialCharacter
+                    </label>
+                    <label class="text-danger" *ngIf="form.controls['password'].hasError('minlength')">
+                    Must have Minimum 8 characters
+                    </label>
+
+                </div>
+                <input type="checkbox"  (click)="hide = !hide">  <label> Show password</label>
+                <br>
+                <button type="submit" class="btn btn-primary" (click)="login()">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

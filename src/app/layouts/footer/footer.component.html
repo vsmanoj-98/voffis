@@ -1,0 +1,31 @@
+ <table class="table table-hover">
+     <thead>
+         <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>role</th> 
+            <th>action</th>
+        </tr>
+        <tr *ngFor="let domain of domains;let i= index">
+            <td>
+                <span *ngIf="!domain.editable">{{domain.id}}</span>
+                <input type="text" class="form-control" [(ngModel)]="domain.id" *ngIf="domain.editable">
+            </td>
+            <td>
+                <span *ngIf="!domain.editable">{{domain.name}}</span>
+                <input type="text" class="form-control" [(ngModel)]="domain.name" *ngIf="domain.editable">
+            </td>
+            <td>
+                <span *ngIf="!domain.editable">{{domain.role}}</span>
+                <input type="text" class="form-control" [(ngModel)]="domain.role" *ngIf="domain.editable">
+            </td>
+            <td>
+                <button class="btn btn-outline" (click)="edit(domain)">edit</button>
+            </td>
+        </tr>
+        
+     </thead>
+     <tbody>
+            
+    </tbody>
+ </table>
